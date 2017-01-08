@@ -60,6 +60,9 @@ def parse_weather(data):
     conditions = weather_data.get('weather', None)
     if conditions:
         conditions = str(conditions[0].get('main', '')).lower()
+        # Changing "additional" to "windy"
+        if conditions == "additional":
+            conditions = "windy"
 
     # WIND SPEED
     wind_speed = weather_data.get('wind', {}).get('speed', 'N/A')

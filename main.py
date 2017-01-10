@@ -5,11 +5,18 @@ import requests
 import json
 import os
 import config
+import argparse
 
 from utils import Temp, Wind, Date
 
 zip_code = '90245' # El Segundo
 zip_code = '89158' # Aria, Las Vegas
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='Aggregate weather data.')
+    parser.add_argument('--zipcode', metavar='zipcode', type=int, help='zip code as integer', default=None)
+    return parser.parse_args()
+
 
 def get_weather(zip_code):
     """ Grab weather data from OpenWeatherMap """
@@ -19,12 +26,12 @@ def get_weather(zip_code):
     r = requests.get(url)
 
     if r.status_code == 200:
-        parse_weather(r.text)
+        parse_weather(r.text, zip_code)
     else:
         print('OpenWeatherMap status code: {}'.format(r.status_code))
 
 
-def parse_weather(data):
+def parse_weather(data, zip_code):
     """ Parse weather data from get_weather """
 
     weather_data = json.loads(data)
@@ -119,6 +126,11 @@ def write_to_file(fname, json_data):
 
 
 def main():
+    args = parse_args()
+
+    if args.zipcode:
+        zip_code = str(args.zipcode)
+
     get_weather(zip_code)
 
 

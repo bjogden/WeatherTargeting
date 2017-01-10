@@ -54,5 +54,5 @@ class Weather(object):
     800: Clear
     80x: Clouds
     90x: Extreme (find exclamation point)
-    9xx: Additional (calm, breeze, wind, storm... etc.)
+    9xx: Additional = Windy (calm, breeze, wind, storm... etc.)
     """

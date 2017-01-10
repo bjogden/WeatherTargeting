@@ -10,7 +10,9 @@ To run:
 2. Install requirements
     - `pip install -r requirements.pip`
 
-3. Run with `python main.py --zipcode [zipcode int]` or `./main.py --zipcode [zipcode int]` (Python 2.7)
+3. Run program, one of two ways (Python 2.7):
+    - `python main.py --zipcode [zipcode int]` or...
+    - `./main.py --zipcode [zipcode int]`
 
 4. Check "logs" subdirectory with JSON file
   - NOTE: log file structure is [zip code]_[OpenWeatherMap weather data timestamp].json
